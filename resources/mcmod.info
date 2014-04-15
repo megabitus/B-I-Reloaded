@@ -1,0 +1,16 @@
+[
+{
+  "modid": "B&I Reloaded",
+  "name": "Block and Items Reloaded",
+  "description": "Block and Items Reloaded is a mod that adds bloks!",
+  "version": "0.1",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Megabitus"],
+  "credits": "To me :)!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
