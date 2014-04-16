@@ -6,7 +6,6 @@ import net.minecraft.world.World;
 
 import com.BI.Blocks.TileEntitys.PowderingMachineTileEntity;
 import com.BI.Interfaces.PowderingMachine.ContainerPowderingMachine;
-import com.BI.Interfaces.PowderingMachine.Gui_PowderingMachine;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -17,7 +16,7 @@ public class Gui_Handeler implements IGuiHandler{
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID){
 		case 1: if(te !=null && te instanceof PowderingMachineTileEntity){
-			return new Gui_PowderingMachine(player.inventory, (PowderingMachineTileEntity)te);
+			return new ContainerPowderingMachine(player.inventory, (PowderingMachineTileEntity)te);
 		}
 		}
 		return null;
