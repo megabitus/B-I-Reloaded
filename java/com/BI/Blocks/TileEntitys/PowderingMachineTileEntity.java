@@ -5,16 +5,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.BI.Blocks.Mod_Blocks;
-
 public class PowderingMachineTileEntity extends TileEntity implements IInventory{
 	private ItemStack[] items;
-	private int ticks = 0;
 	int k;
 	public PowderingMachineTileEntity(){
 		items = new ItemStack[1];
@@ -31,6 +29,7 @@ public class PowderingMachineTileEntity extends TileEntity implements IInventory
 					{
 						if (world.getBlock(i, j, k) == block)
 						{
+							//							System.out.println("The block has been detected!");
 							variabila = true;
 						}
 					}
@@ -41,30 +40,12 @@ public class PowderingMachineTileEntity extends TileEntity implements IInventory
 	}
 	@Override
 	public void updateEntity() {
-		ticks++;
-		if(ticks==3600){
-			ticks=0;
-			if(!worldObj.isRemote){
-				if(this.search(worldObj, xCoord, yCoord, zCoord, Blocks.water))
-					if(worldObj.isDaytime())
-					{
-						IInventory inventory = (IInventory)this;
-						this.change(inventory);
-						super.updateEntity();
-					}
+		if(search(worldObj, xCoord, yCoord, zCoord, Blocks.water)){
+			if(worldObj.isDaytime()){
+				///////////TO DO INCEREASE ITEM
 			}
 		}
 	}
-	private void change(IInventory inv) {
-		for(int i = 0; i < inv.getSizeInventory(); i++){
-			ItemStack stack = inv.getStackInSlot(i);
-			if(stack !=null && stack == new ItemStack(Mod_Blocks.TelotriteOre)){
-				int iteme = stack.stackSize;
-			}
-		}
-
-	}
-
 	@Override
 	public void closeInventory() {}
 	@Override
